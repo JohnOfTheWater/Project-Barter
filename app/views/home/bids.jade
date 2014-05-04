@@ -1,0 +1,39 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    link(rel='icon', href='/img/favicon.jpg')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/less/app.css')
+    script(src='/js/vendor/modernizr.js')
+  body
+    #navbar
+      #logo
+      #bartertown Project&#9851;Barter
+      input#search(type='search', placeholder='search...', results='0', autofocus='true')
+      button.tiny.radius#searchButton Search
+      a.button.tiny.radius#userButt(href='/user/'+userName)=userName
+      a.button.tiny.radius#logout(href='/') Logout
+    h1.welcome3 My Bids
+    h2
+    #myBidsPanel
+      each item in items
+        .object
+          .picture3(val= item._id, style='background-image:url("'+item.photo+'")')
+          .nome3: a(href='/item/' + item._id+userName)= item.name
+          //.year='Year: '+item.year
+          .cost='Cost: $'+item.cost
+          button.tiny.radius.acceptBid(val= item._id) Trade!
+          select.radius.bids(val= item._id)
+          //.description='Description: '+item.description
+
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/vendor/moment.js')
+    script(src='/js/source/mainBids.js')
+

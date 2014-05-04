@@ -1,0 +1,98 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    link(rel='icon', href='/img/favicon.jpg')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/less/app.css')
+    script(src='/js/vendor/modernizr.js')
+  body
+    #navbar
+      #logo
+      #bartertown Project&#9851;Barter
+      input#search(type='search', placeholder='search...', results='0', autofocus='true')
+      button.tiny.radius#searchButton Search
+      button.tiny.radius#userButton=userName
+      a.button.tiny.radius#logout(href='/logout') Logout
+    h1.welcome Welcome
+      h1.welcome2=userName
+    h2
+    #userPanel
+      #close close[x]
+      #userP
+      #userN
+      #userE
+      a.button.small.radius#createNewItem(href='/items/'+userName) New Item
+      button.small.radius#myItems My Items
+      button.small.radius#myBids My Bids
+      button.small.radius#cerca Search
+    #myItemsPanel
+      #closeMI close[x]
+      #nomeI Item
+      #fotoI Picture
+      #costoI Cost
+    .row
+      .small-2.columns
+        if (skip === 0)
+          button.tiny.radius.disabled#back Back
+        else
+          a(href='/user/'+userName+'/'+ (skip - 1))
+            button.tiny.radius#back1 Back
+      .small-10.columns#current
+        Current page:
+        span= skip + 1
+      .small-2.columns
+        if (skip === pages - 1)
+          button.tiny.radius.disabled#forward Forward
+        else
+          a(href='/user/'+userName+'/'+ (skip + 1))
+            button.tiny.radius#forward1 Forward
+    .row
+      .small-12.columns
+        each item in items
+          .item: a(href='/item/'+item._id+userName, val= item._id)
+            .picture(style='background-image:url("'+item.photo+'")')
+            .nome: a(href='/item/' + item._id+userName)= item.name
+    #searchPanel
+      #closeS close[x]
+      label Search by Name
+      input.radius#byName(type='search', placeholder='search by name...', results='0', autofocus='true')
+      button.tiny.radius#sn Search
+      label Search by Category
+      select.radius#byCategory
+        option Home
+        option Collections
+        option Games
+        option Cars
+        option Art
+        option Books
+        option Cameras
+        option Phones
+        option Clothing
+        option Collectibles
+        option Computer/Tablets
+        option Dvd/Cd/Movies
+        option Music
+        option Health & Fitness
+        option Home
+        option Pets
+        option Services
+        option Sport
+        option Toys & Hobbies
+        option Videogames/Consoles
+        option Food
+      button.tiny.radius#sc Search
+      button.tiny.radius#feelLucky I'm Feeling Lucky
+    #searchResult
+      #closeSR close[x]
+
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/vendor/moment.js')
+    script(src='/js/source/main.js')
+

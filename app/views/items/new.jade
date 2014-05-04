@@ -1,0 +1,76 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    link(rel='icon', href='/img/favicon.jpg')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/less/app.css')
+    script(src='/js/vendor/modernizr.js')
+  body
+    #navbar
+      #logo
+      #bartertown Project&#9851;Barter
+      input#search(type='search', placeholder='search...', results='0', autofocus='true')
+      button.tiny.radius#searchButton Search
+      button.tiny.radius#userButton=userName
+      a.button.tiny.radius#logout(href='/logout') Logout
+    h1 Add a New Item to Trade!
+    form(action='/items/'+userName, method='post', enctype='multipart/form-data')
+          fieldset#fieldset2
+            legend New Item
+            .row
+              .small-4.columns
+                label Item Name
+                input(type='text', name='name', autofocus='true')
+              .small-8.columns
+                label Item Picture
+                input(type='file', name='photo')
+            .row
+              .small-6.columns
+                label Year
+                input(type='text', name='year', placeholder='YYYY')
+              .small-6.columns
+                label Cost
+                input(type='text', name='cost', placeholder='estimate cost..')
+            .row
+              .small-8.columns
+                label Description
+                textarea#txtarea(type='text', maxlength='120' name='description', placeholder='a brief description of the item...')
+              .small-4.columns
+                button.radius#createStuff Create!
+            .row
+              .small-4.columns
+                label Category
+                select(name='tags')
+                  option Home
+                  option Collections
+                  option Games
+                  option Cars
+                  option Art
+                  option Books
+                  option Cameras
+                  option Phones
+                  option Clothing
+                  option Collectibles
+                  option Computer/Tablets
+                  option Dvd/Cd/Movies
+                  option Music
+                  option Health & Fitness
+                  option Home
+                  option Pets
+                  option Services
+                  option Sport
+                  option Toys & Hobbies
+                  option Videogames/Consoles
+                  option Food
+
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/vendor/moment.js')
+    script(src='/js/source/main.js')
+

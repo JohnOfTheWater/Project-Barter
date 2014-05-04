@@ -1,0 +1,42 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= item.name
+    link(rel='icon', href='/img/favicon.jpg')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/less/app.css')
+    script(src='/js/vendor/modernizr.js')
+  body
+    #navbar
+      #logo(val= item.photo)
+      #bartertown Project&#9851;Barter
+      input#search(type='search', placeholder='search...', results='0', autofocus='true')
+      button.tiny.radius#searchButton Search
+      a.button.tiny.radius#userButt(href='/user/'+user)=user
+      a.button.tiny.radius#logout(href='/') Logout
+    .row
+      .small-12.columns
+        .sitem(val= item._id)
+        .spicture(style='background-image:url("'+item.photo+'")')
+        .snome= item.name
+        .syear='Year: '+item.year
+        .scost='Cost: $'+item.cost
+        .sdescription='Description: '+item.description
+        .sowner: a(href='/items/'+item.owner)='OWNER: '+item.owner
+        if user!=item.owner
+          button.radius.bid#bidButton Bid!
+          select.radius.select#select
+    #searchBidss
+      #textBids Bids
+
+
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/vendor/moment.js')
+    script(src='/js/source/mainSI.js')
+

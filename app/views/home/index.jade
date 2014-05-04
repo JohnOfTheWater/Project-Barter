@@ -1,0 +1,65 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    link(rel='shortcut icon', href='/img/favicon.jpg')
+    link(rel='icon', href='/img/favicon.jpg')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/less/app.css')
+    script(src='/js/vendor/modernizr.js')
+  body
+    #navbar
+      #logo
+      #bartertown Project&#9851;Barter
+      input#search(type='search', placeholder='search...', results='0', autofocus='true')
+      button.tiny.radius#searchButton Search
+      button.tiny.radius#loginButton Login
+    h1#welcome Welcome to Project Barter!
+      h2#example These are just a few of hundreds of awesome Items that you can find inside...  please register and start to trade right now!
+    form#loginPanel(enctype='multipart/form-data')
+      #barterTown Barter<br>Town
+        #logo2
+      input#userName(type='text', placeholder='email...', autofocus='true')
+      input#password(type='password', placeholder='password...')
+      button.tiny.radius#login Login
+    .row
+      .small-10.columns#random
+        each item in items
+          .item
+            .picture(style='background-image:url("'+item.photo+'")')
+            .nome= item.name
+    form(action='/auth', method='post', enctype='multipart/form-data')
+          fieldset#fieldset
+            legend Registration Form
+            .row
+              .small-4.columns
+                label User Name
+                input(type='text', name='name', autofocus='true')
+              .small-8.columns
+                label Profile Picture
+                input(type='file', name='photo')
+            .row
+              .small-6.columns
+                label Email
+                input(type='email', name='email')
+              .small-6.columns
+                label Password
+                input(type='password', name='password')
+            .row
+              .small-4.columns
+                &nbsp;
+              .small-4.columns
+                &nbsp;
+              .small-4.columns
+                button.small.radius Register!
+
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/vendor/moment.js')
+    script(src='/js/source/main.js')
+
